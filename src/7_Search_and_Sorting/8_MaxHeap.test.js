@@ -45,19 +45,7 @@ class MaxHeap {
 
   insert(array, value) {
     array.push(value);
-    let n = array.length - 1;
-    let i = n;
-
-    while (true) {
-      let parent = Math.floor((i + 1) / 2 - 1);
-
-      if (array[parent] < array[i]) {
-        this.swap(array, parent, i);
-        i = parent;
-      } else {
-        break;
-      }
-    }
+    this.build(array);
 
     return array;
   }
