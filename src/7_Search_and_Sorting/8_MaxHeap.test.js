@@ -1,10 +1,10 @@
 class MaxHeap {
   build(list) {
-    let n = list.length;
-    let parent = Math.floor(n / 2 - 1);
+    let n = list.length - 1;
+    let parent = Math.floor((n - 1) / 2);
 
     for (let i = parent; i >= 0; i--) {
-      this.heapify(list, i, n - 1);
+      this.heapify(list, i, n);
     }
 
     return list;
@@ -34,9 +34,11 @@ class MaxHeap {
     let n = array.length - 1;
 
     while (n >= 0) {
+      console.log(n, array);
+
+      this.heapify(array, 0, n);
       this.swap(array, 0, n);
       n--;
-      this.heapify(array, 0, n);
     }
     return array;
   }
@@ -69,19 +71,27 @@ describe('Max Heap', () => {
   });
 
   test('Build', () => {
-    const array = [70, 50, 40, 45, 35, 39, 16, 10, 9, 60];
-    let expected = [70, 60, 40, 45, 50, 39, 16, 10, 9, 35];
+    const array = [3, 1, 6, 5, 2, 4];
+    let expected = [6, 5, 4, 1, 2, 3];
 
     let res = heap.build(array);
     expect(res).toEqual(expected);
-    expect(res[0]).toEqual(70); // first value should be max
+    expect(res[0]).toEqual(6); // first value should be max
+
+    // Output:
+    //            6
+    //         /    \
+    //        5      4
+    //       / \    /
+    //      1   2  3
   });
 
   test('Insertion', () => {
     const array = [70, 50, 40, 45, 35, 39, 16, 10, 9];
-
     let expected = [70, 60, 40, 45, 50, 39, 16, 10, 9, 35];
+
     let res = heap.insert(array, 60);
+
     expect(res).toEqual(expected);
     expect(res[0]).toEqual(70); // first value should be max
     expect(heap.insert(array, 5)).toEqual([...expected, 5]);
