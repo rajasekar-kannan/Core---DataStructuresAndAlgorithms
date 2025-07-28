@@ -58,21 +58,21 @@ describe('Max Heap', () => {
     heap = new MaxHeap();
   });
 
-  // test('Build', () => {
-  //   const array = [3, 1, 6, 5, 2, 4];
-  //   let expected = [6, 5, 4, 1, 2, 3];
+  test('Build', () => {
+    const array = [3, 1, 6, 5, 2, 4];
+    let expected = [6, 5, 4, 1, 2, 3];
 
-  //   let res = heap.build(array);
-  //   expect(res).toEqual(expected);
-  //   expect(res[0]).toEqual(6); // first value should be max
+    let res = heap.build(array);
+    expect(res).toEqual(expected);
+    expect(res[0]).toEqual(6); // first value should be max
 
-  //   // Output:
-  //   //            6
-  //   //         /    \
-  //   //        5      4
-  //   //       / \    /
-  //   //      1   2  3
-  // });
+    // Output:
+    //            6
+    //         /    \
+    //        5      4
+    //       / \    /
+    //      1   2  3
+  });
 
   test('Insertion', () => {
     const array = [70, 50, 40, 45, 35, 39, 16, 10, 9];
@@ -85,11 +85,11 @@ describe('Max Heap', () => {
     expect(heap.insert(array, 5)).toEqual([...expected, 5]);
   });
 
-  // test('Sort', () => {
-  //   const array = [70, 50, 40, 45, 35, 39, 16, 10, 9, 60];
+  test('Sort', () => {
+    const array = [70, 50, 40, 45, 35, 39, 16, 10, 9, 60];
 
-  //   let res = heap.build(array);
-  //   let sorted = heap.delete(res);
-  //   expect(sorted).toEqual([9, 10, 16, 35, 39, 40, 45, 50, 60, 70]);
-  // });
+    let res = heap.build(array);
+    let sorted = heap.delete(res);
+    expect(sorted).toEqual([9, 10, 16, 35, 39, 40, 45, 50, 60, 70]);
+  });
 });
